@@ -25,9 +25,8 @@ node('master') {
         filter: 'sromanchenko_dsl_script.tar.gz']);
     }
     stage('Packaging and Publishing') {
-        sh 'tar xvf sromanchenko_dsl_script.tar.gz'
-        sh 'cp build/libs/mntlab-ci-pipeline.jar gradle-simple.jar'
-        sh 'tar -czf pipeline-sromanchenko-${BUILD_NUMBER}.tar.gz jobs.groovy Jenkinsfile gradle-simple.jar'
+        sh 'tar -xf sromanchenko_dsl_script.tar.gz jobs.groovy'
+        sh 'tar -czf pipeline-sromanchenko-"${BUILD_NUMBER}".tar.gz jobs.groovy Jenkinsfile -C build/libs gradle-simple.jar'
         archiveArtifacts 'pipeline-sromanchenko-${BUILD_NUMBER}.tar.gz'
     }
     stage('Asking for manual approval') {
