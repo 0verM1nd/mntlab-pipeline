@@ -27,6 +27,7 @@ node('master') {
     stage('Packaging and Publishing') {
         sh 'tar -xf sromanchenko_dsl_script.tar.gz jobs.groovy'
         sh 'tar -czf pipeline-sromanchenko-"${BUILD_NUMBER}".tar.gz jobs.groovy Jenkinsfile -C build/libs gradle-simple.jar'
+        sh 'chmod 755 /var/lib/jenkins/workspace/mntlab-pipeline/build/libs/gradle-simple.jar'
         archiveArtifacts 'pipeline-sromanchenko-${BUILD_NUMBER}.tar.gz'
     }
     stage('Asking for manual approval') {
