@@ -19,9 +19,9 @@ node('master') {
     }
     stage('Triggeringg job and fetching artefact after finishing'){
         echo "Trigger stage begins."
-        build job: "MNTLAB-sromanchenko-child-1-build-job", parameters: [string(name: 'BRANCH_NAME', value: 'sromanchenko' )]
+        build job: "MNTLAB-sromanchenko-child1-build-job", parameters: [string(name: 'BRANCH_NAME', value: 'sromanchenko' )]
         step ([$class: 'CopyArtifact',
-        projectName: "MNTLAB-sromanchenko-child-1-build-job",
+        projectName: "MNTLAB-sromanchenko-child1-build-job",
         filter: 'sromanchenko_dsl_script.tar.gz']);
     }
     stage('Packaging and Publishing') {
