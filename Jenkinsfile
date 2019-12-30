@@ -36,7 +36,7 @@ node('master') {
     }
     stage('Deployment') {
         echo "Deployment stage begins."
-        sh "java -jar gradle-simple.jar"
+        sh "java -jar /var/lib/jenkins/workspace/mntlab-pipeline/build/libs/gradle-simple.jar"
     }
 
     stage('Sending status') {
