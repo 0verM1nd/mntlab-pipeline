@@ -25,7 +25,6 @@ node('master') {
         filter: 'sromanchenko_dsl_script.tar.gz']);
     }
     stage('Packaging and Publishing') {
-         stage('Packaging and Publishing results') {
     sh "tar -xzf sromanchenko_dsl_script.tar.gz jobs.groovy"
     sh "tar -czf pipeline-sromanchenko-${BUILD_NUMBER}.tar.gz jobs.groovy Jenkinsfile -C build/libs/gradle-simple.jar"
     archiveArtifacts "pipeline-${student}-${BUILD_NUMBER}.tar.gz"
@@ -42,6 +41,4 @@ node('master') {
     stage('Sending status') {
     echo "SUCCESS!"
    }
-    
-
 }
