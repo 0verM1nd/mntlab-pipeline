@@ -1,7 +1,7 @@
 node('master') {
     stage('Preparation') {
         echo "Preparation stage"
-        git branch: 'sromanchenko', url: https://github.com/0verM1nd/mntlab-pipeline.git '
+        git branch: 'sromanchenko', url: 'https://github.com/0verM1nd/mntlab-pipeline.git'
     }
     
     stage('Building code') {
