@@ -15,7 +15,7 @@ node('master') {
                 phase1: {echo "Unit Test  stage begins."; sh '/opt/gradle/gradle-5.2.1/bin/gradle test' },
                 phase2: {echo "Jacoco Test stage begins."; sh '/opt/gradle/gradle-5.2.1/bin/gradle jacocoTestReport' },
                 phase3: {echo "Cucumber Test stage begins."; sh '/opt/gradle/gradle-5.2.1/bin/gradle cucumber' }
-        )
+              )
     }
     stage('Triggeringg job and fetching artefact after finishing'){
         echo "Trigger stage begins."
@@ -29,7 +29,6 @@ node('master') {
         sh 'cp build/libs/mntlab-ci-pipeline.jar gradle-simple.jar'
         sh 'tar -czf pipeline-sromanchenko-${BUILD_NUMBER}.tar.gz jobs.groovy Jenkinsfile gradle-simple.jar'
         archiveArtifacts 'pipeline-sromanchenko-${BUILD_NUMBER}.tar.gz'
-    }
     }
     stage('Asking for manual approval') {
                 input message: 'Please, approve to continue.', ok: 'Yes'
